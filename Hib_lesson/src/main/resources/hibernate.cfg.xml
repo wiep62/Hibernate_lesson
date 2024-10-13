@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property> <!-- Драйвер с пом. которого подр. к БД , для этого мы подтягивали зависимость в POM файле-->
+    <property name="connection.url">jdbc:mysql://localhost:3306/skillbox"</property> <!-- адрес БД -->
+    <property name="connection.username">skillbox</property> <!-- Логин -->
+    <property name="connection.password">skillbox</property> <!-- Пороль -->
+    <property name="connection.pool_size">2</property> <!-- Максимально возможное количество открытых соединений с  БД -->
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property> <!-- Диалект с помощью которого будем общаться с БД --><property name="show_sql">true</property> <!-- выводит в логи операции с ГИБЕРНЕТ -->
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property><!-- при запуске будет создаваться(наполняться) БД, после выкл. будет удаляться  -->
+  </session-factory>
+</hibernate-configuration>
