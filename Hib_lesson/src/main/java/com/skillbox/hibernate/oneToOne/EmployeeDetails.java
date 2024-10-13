@@ -19,7 +19,7 @@ public class EmployeeDetails {
     // Если в этом классе убрать поле employee, то получится однонаправленная связь: сотрудник
     // сможет ссылаться на свои детали, а детали нет.
     // В данном же случае прописана двунаправленная связь
-    @OneToOne(mappedBy = "details")
+   @OneToOne(mappedBy = "details")  //todo мапимся к полю ДЕТАИЛЗ
     private Employee employee;
 
     public Long getId() {

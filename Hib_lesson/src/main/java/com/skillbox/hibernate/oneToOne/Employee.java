@@ -15,7 +15,7 @@ public class Employee {
 
     @OneToOne
     @JoinColumn(name = "details_id")
-    private EmployeeDetails details;
+    private EmployeeDetails details; //todo мапимся к полю
 
     public Long getId() {
         return id;
