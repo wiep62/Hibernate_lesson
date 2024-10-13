@@ -27,9 +27,12 @@ public class University {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "university")
-    private List<Student> students;
+    @Transient
+    private String test;
 
+    @OneToMany(mappedBy = "university"/*,fetch = fetchType.EAGER - если так будет то вытащим всю БД*/)  //todo 1 универ ко многим студентам
+    private List<Student> students; //TODO СПИСОК СТУДЕНТОВ. если зайдем в студенты то увидим поля студентов, присоединяем ДЖОЙН М к 1 . ЛИСТ УНИВЕРСИТЕТ ВСЕГДА БУДЕТ ОДИН
+//todo если достанем 1-го студента то у него достанем только 1 универ к которому он принадлежит. Но если достанем универ, мы достанем всех студентов которые там учатся
     public Long getId() {
         return id;
     }

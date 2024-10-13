@@ -16,12 +16,49 @@ public class Main {
     public static void main(String[] args) {
         Session session = sessionFactory.getCurrentSession();
         try {
-//todo 1 two 1:
+
+            session.getTransaction().begin();
+            Reader reader = session.get(Reader.class, 1L); //ОБЪЕКТ ЕСТЬ В ПАМЯТИ, ССЫЛКА НА НЕГО НЕ ПРОПОДАЛА
+            System.out.println(reader.getBooks()); //сколько книг прочитал читатель
+            session.getTransaction().commit();
+            session.close();
+
+
+/*//ДОСТАЕМ СТУДИКОВ:
+            session.getTransaction().begin();
+            University university = session.get(University.class, 1L); //ОБЪЕКТ ЕСТЬ В ПАМЯТИ, ССЫЛКА НА НЕГО НЕ ПРОПОДАЛА
+            System.out.println(university.getStudents());
+            System.out.println(university.getTitle());
+
+            session.getTransaction().commit();
+            session.close();*/
+
+
+/*
+            session.getTransaction().begin();
+            University university = session.get(University.class, 1L); //ОБЪЕКТ ЕСТЬ В ПАМЯТИ, ССЫЛКА НА НЕГО НЕ ПРОПОДАЛА
+        //    System.out.println(university.getStudents());
+            session.getTransaction().commit();
+            session.close();
+
+            System.out.println(university.getStudents()); //TODO СТУДЕНТОВ ДОСТАТЬ НЕ ПОЛУЧИЛОСЬ,
+            System.out.println(university.getTitle()); //TODO СПИСОК УНИВЕРОВ ВЫВОДИТСЯ
+*/
+
+  /*
+          1 2 м
+          session.getTransaction().begin();
+            University university = session.get(University.class, 1L);
+            System.out.println(university.getStudents());
+            session.getTransaction().commit();
+            session.close();
+*/
+/*//todo 1 two 1:
             session.getTransaction().begin();
             Employee userOne = session.get(Employee.class, 3L);
             System.out.println(userOne.getDetails());
             session.getTransaction().commit();
-            session.close();
+            session.close();*/
 
 /*
             session = sessionFactory.getCurrentSession();

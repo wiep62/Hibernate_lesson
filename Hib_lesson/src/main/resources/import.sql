@@ -15,18 +15,19 @@ DROP TABLE IF EXISTS universities CASCADE;
 CREATE TABLE universities (id bigserial PRIMARY KEY, title VARCHAR(255));
 INSERT INTO universities (title) VALUES('DSTU'),('NPU');
 
---DROP TABLE IF EXISTS students CASCADE;
---CREATE TABLE students (id bigserial PRIMARY KEY, name VARCHAR(255), university_id bigint REFERENCES universities (id));
---INSERT INTO students (name, university_id) VALUES('Alexander', 1),('Bob', 2),('John', 1);
+DROP TABLE IF EXISTS students CASCADE;
+CREATE TABLE students (id bigserial PRIMARY KEY, name VARCHAR(255), university_id bigint REFERENCES universities (id));
+INSERT INTO students (name, university_id) VALUES('Alexander', 1),('Bob', 2),('John', 1);
+
 -- --M2M
---DROP TABLE books IF EXISTS;
---CREATE TABLE IF NOT EXISTS books (id bigserial PRIMARY KEY, title VARCHAR(255));
---INSERT INTO books (title) VALUES('Mistborn'),('Neverwhere'),('Ambers Chronicles'),('Harry Potter'),('Lockwood & Co.'),('Foundation Trilogy'),('Liveship Traders Trilogy'),('A Night in the Lonesome October'),('Da Vinci Code'),('Lord of the Ring');
+DROP TABLE books IF EXISTS;
+CREATE TABLE IF NOT EXISTS books (id bigserial PRIMARY KEY, title VARCHAR(255));
+INSERT INTO books (title) VALUES('Mistborn'),('Neverwhere'),('Ambers Chronicles'),('Harry Potter'),('Lockwood & Co.'),('Foundation Trilogy'),('Liveship Traders Trilogy'),('A Night in the Lonesome October'),('Da Vinci Code'),('Lord of the Ring');
 
---DROP TABLE IF EXISTS readers CASCADE;
---CREATE TABLE readers (id bigserial PRIMARY KEY, name VARCHAR(255));
---INSERT INTO readers (name) VALUES ('Alexander'), ('Bob');
+DROP TABLE IF EXISTS readers CASCADE;
+CREATE TABLE readers (id bigserial PRIMARY KEY, name VARCHAR(255));
+INSERT INTO readers (name) VALUES ('Alexander'), ('Bob');
 
---DROP TABLE IF EXISTS books_readers CASCADE;
---CREATE TABLE books_readers (book_id bigint, reader_id bigint, FOREIGN KEY (book_id) REFERENCES books (id), FOREIGN KEY (reader_id) REFERENCES readers (id));
---INSERT INTO books_readers (book_id, reader_id) VALUES(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),(8, 1),(1, 2);
+DROP TABLE IF EXISTS books_readers CASCADE;
+CREATE TABLE books_readers (book_id bigint, reader_id bigint, FOREIGN KEY (book_id) REFERENCES books (id), FOREIGN KEY (reader_id) REFERENCES readers (id));
+INSERT INTO books_readers (book_id, reader_id) VALUES(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),(8, 1),(1, 2);

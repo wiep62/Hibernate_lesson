@@ -20,7 +20,7 @@ public class Student {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne   //TODO студенты к 1-му универу
     @JoinColumn(name = "university_id")
     private University university;
 
