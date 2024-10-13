@@ -1,12 +1,8 @@
-package org.example;
+package first;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Main {
     private static SessionFactory sessionFactory = new Configuration()
@@ -16,6 +12,9 @@ public class Main {
  Session session = sessionFactory.getCurrentSession();
  try {
      session.getTransaction().begin();
+
+     User user = session.get(User.class, 1L);
+     System.out.println(user);
      session.getTransaction().commit();
  }catch (Exception e){
      e.printStackTrace();
