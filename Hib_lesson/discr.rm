@@ -10,3 +10,23 @@ PRIMARY KEY - первичный ключ
 id bigserial (инкрементируемый тип при сохранении увеличивается) - постгресовский тип данных как лонг и т.д.
 6. достаем ЮЗЕРА:
      User user = session.get(User.class, 1);
+7. создаем нового юзера:
+User user = new User("Jon");
+session.save(user);
+id мы не указываем т.к. у нас по умолчанию в БД итерация
+//получаем пользователя:
+       session.getTransaction().begin();
+
+        // 1. User user = session.get(User.class, 3);
+    User user = new User("Jon");
+    session.save(user);
+         session.getTransaction().commit();
+         session.close();
+
+         //получаем пользователя
+         session = sessionFactory.getCurrentSession();
+         session.getTransaction().begin();
+              User userOne = session.get(User.class, 4L);
+         session.getTransaction().commit();
+
+         System.out.println(userOne);

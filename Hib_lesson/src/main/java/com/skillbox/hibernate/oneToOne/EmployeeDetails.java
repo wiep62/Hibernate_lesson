@@ -1,4 +1,4 @@
-package oneToOne;
+package com.skillbox.hibernate.oneToOne;
 
 import javax.persistence.*;
 

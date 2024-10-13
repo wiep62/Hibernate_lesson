@@ -1,4 +1,4 @@
-package manyToOne;
+package com.skillbox.hibernate.mToM;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,12 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
-@Table(name = "students")
-public class Student {
+@Table(name = "readers")
+public class Reader {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,9 +22,13 @@ public class Student {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "university_id")
-    private University university;
+    @ManyToMany
+    @JoinTable(
+            name = "books_readers",
+            joinColumns = @JoinColumn(name = "reader_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private List<Book> books;
 
     public Long getId() {
         return id;
@@ -40,24 +46,19 @@ public class Student {
         this.name = name;
     }
 
-    public University getUniversity() {
-        return university;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public void setUniversity(University university) {
-        this.university = university;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
-    public Student() {
-    }
-
-    public Student(String name, University university) {
-        this.name = name;
-        this.university = university;
+    public Reader() {
     }
 
     @Override
     public String toString() {
-        return String.format("Student [id = %d, name = %s]", id, name);
+        return String.format("Reader [id = %d, name = %s]", id, name);
     }
 }

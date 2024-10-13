@@ -1,4 +1,4 @@
-package manyToOne;
+package com.skillbox.hibernate.manyToOne;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

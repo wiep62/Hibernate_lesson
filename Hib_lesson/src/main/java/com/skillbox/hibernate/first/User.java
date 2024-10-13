@@ -1,4 +1,4 @@
-package first;
+package com.skillbox.hibernate.first;
 
 import javax.persistence.*;
 
@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-    @Id //без него не работает гибернейт
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") //говорим хибернейту как наз. колонка в таблице
-    private long id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -17,11 +17,11 @@ public class User {
     @Column(name = "score")
     private int score;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,6 +39,10 @@ public class User {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public User(String name) {
+        this.name = name;
     }
 
     public User() {
